@@ -1,5 +1,5 @@
 import type { RequestHandler } from '@sveltejs/kit';
-import { app } from '../../../server';
+import { app } from '@server';
 
 export const GET: RequestHandler = ({ request }) => app.fetch(request);
 export const POST: RequestHandler = ({ request }) => app.fetch(request);

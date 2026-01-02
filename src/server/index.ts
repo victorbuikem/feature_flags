@@ -1,5 +1,6 @@
 import { serve } from '@hono/node-server';
 import { Hono } from 'hono';
+import { adminRouter } from './routes/admin';
 
 declare module 'hono' {
 	interface ContextVariableMap {
@@ -9,18 +10,7 @@ declare module 'hono' {
 }
 export const app = new Hono().basePath('/api/v1');
 
-const routes = app
-	.get('/hello', (c) => {
-		return c.json({
-			message: 'Hello from Hono!'
-		});
-	})
-	.get('/:wild', (c) => {
-		const wild = c.req.param('wild');
-		return c.json({
-			message: `Hello from Hono! You're now on /api/${wild}!`
-		});
-	});
+const routes = app.route('admin', adminRouter);
 
 serve(app);
 

@@ -7,7 +7,17 @@ const config = {
 	// for more information about preprocessors
 	preprocess: vitePreprocess(),
 
-	kit: { adapter: adapter() }
+	kit: {
+		alias: {
+			$utils: './src/utils',
+			$ui: './src/ui',
+			'@server': './src/server'
+		},
+		experimental: {
+			remoteFunctions: true
+		},
+		adapter: adapter()
+	}
 };
 
 export default config;
