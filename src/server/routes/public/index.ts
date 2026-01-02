@@ -2,7 +2,7 @@ import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { sdkRouter } from './sdk';
 
-export const adminRouter = new Hono()
+export const publicRouter = new Hono()
 	.use(
 		'*',
 		cors({

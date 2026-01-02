@@ -1,6 +1,7 @@
 import { serve } from '@hono/node-server';
 import { Hono } from 'hono';
 import { adminRouter } from './routes/admin';
+import { publicRouter } from './routes/public';
 
 declare module 'hono' {
 	interface ContextVariableMap {
@@ -10,7 +11,7 @@ declare module 'hono' {
 }
 export const app = new Hono().basePath('/api/v1');
 
-const routes = app.route('admin', adminRouter);
+const routes = app.route('admin', adminRouter).route('public', publicRouter);
 
 serve(app);
 
